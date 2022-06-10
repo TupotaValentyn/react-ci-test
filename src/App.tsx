@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         {/*<img src={logo} className="App-logo" alt="logo" />*/}
-        <video width="800px" height="800px" controls>
+        <video width="100%" height="100%" controls>
             <source src={Video} type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
         </video>
       </header>
