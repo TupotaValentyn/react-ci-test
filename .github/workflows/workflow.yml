@@ -58,10 +58,12 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: |
           cd ./server
-          npm i
+          npm install
           cd ../
-          npm i
+          ls -la
+          npm install
+          ls -la
           npm run build
           mv build ./server
           cd ./server
-          npm run build
+          node app.js
