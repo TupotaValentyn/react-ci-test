@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 
 // @ts-ignore
 import Video from './videos/video1.mp4';
 
+const useApp = () => {
+  useEffect(() => {
+    console.log(window.Telegram.WebApp);
+  }, [])
+}
+
 function App() {
+  useApp();
   return (
     <div className="App">
       <header className="App-header">
