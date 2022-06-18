@@ -57,13 +57,16 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: |
-          cd ./server
-          npm install
-          cd ../
+#          cd ./server
+#          npm install
+#          cd ../
           ls -la
           npm install
           ls -la
           npm run build
-          mv build ./server
-          cd ./server
-          node app.js
+          CI_JOB_TIMESTAMP="-Dbuild.timestamp=$(date --utc --iso-8601=seconds)"
+          IMAGE_TAG=CI_JOB_TIMESTAMP
+          docker build -t "${IMAGE_TAG}"
+          docker stop 'test-ci' || true
+          docker rm 'test-ci' --force || true
+          docker run --rm -d -p 80:5000 --name 'test-ci' ${IMAGE_TAG}
