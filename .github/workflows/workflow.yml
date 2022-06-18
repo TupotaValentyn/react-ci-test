@@ -64,4 +64,4 @@ jobs:
           docker build -t 'ci-1' .
           docker stop 'test-ci' || true
           docker rm 'test-ci' --force || true
-          docker run --rm -d -p 80:5000 --name 'test-ci' 'ci-1'
+          docker run --rm -d -p '7575:5000' --name 'test-ci' 'ci-1'
