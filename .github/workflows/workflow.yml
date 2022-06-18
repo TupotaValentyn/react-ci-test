@@ -61,9 +61,7 @@ jobs:
           npm install
           ls -la
           npm run build
-          CI_JOB_TIMESTAMP="-Dbuild.timestamp=$(date --utc --iso-8601=seconds)"
-          IMAGE_TAG=CI_JOB_TIMESTAMP
-          docker build -t "${IMAGE_TAG}"
+          docker build -t 'ci-1'
           docker stop 'test-ci' || true
           docker rm 'test-ci' --force || true
-          docker run --rm -d -p 80:5000 --name 'test-ci' ${IMAGE_TAG}
+          docker run --rm -d -p 80:5000 --name 'test-ci' 'ci-1'
