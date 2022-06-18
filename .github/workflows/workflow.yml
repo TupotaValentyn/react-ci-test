@@ -61,7 +61,7 @@ jobs:
           npm install
           ls -la
           npm run build
-          sudo docker build -t 'ci-1' .
-          sudo docker stop 'test-ci' || true
-          sudo docker rm 'test-ci' --force || true
-          sudo docker run --rm -d -p '7575:5000' --name 'test-ci' 'ci-1'
+          docker build -t 'ci-1' .
+          docker stop 'test-ci' || true
+          docker rm 'test-ci' --force || true
+          docker run --rm -d -p '7575:5000' --name 'test-ci' 'ci-1'
